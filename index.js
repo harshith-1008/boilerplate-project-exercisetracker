@@ -105,11 +105,11 @@ app.post("/api/users/:_id/exercises", async (req, res) => {
     const savedExercise = await newExercise.save();
 
     res.status(201).json({
+      _id: user._id,
       username: user.username,
       description: savedExercise.description,
       duration: savedExercise.duration,
       date: savedExercise.date.toDateString(),
-      _id: savedExercise._id,
     });
   } catch (error) {
     res.status(500).json({ error: "Error adding exercise" });
